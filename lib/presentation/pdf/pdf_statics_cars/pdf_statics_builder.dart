@@ -14,9 +14,9 @@ class PdfStaticsBuilder {
 
 
   Future<Uint8List> makePdf()  async {
-    for(var singleList in ExcelManagement.carsLists){
+    for(var singleList in []){
       List<List<List<Car>>> singleClassifiedList = await CarsClassification(singleList).sortCars();
-      String name = ExcelManagement.names[ExcelManagement.carsLists.indexOf(singleList)];
+      String name = 'ExcelManagement().names[ExcelManagement().carsLists.indexOf(singleList)]';
       await addPage(singleClassifiedList,name);
     }
 

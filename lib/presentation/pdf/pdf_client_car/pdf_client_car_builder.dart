@@ -86,7 +86,7 @@ class PdfClientCarBuilder{
                                 Text('المعلومات الاساسية :-  ',style: TextStyle(color: PdfColors.amber900,fontWeight: FontWeight.bold,fontSize: 18)),
                                 SizedBox(height: 20),
 
-                                Text('* موديل السيارة :   ${car.model}   ',style: TextStyle(color: PdfColors.blue900,fontWeight: FontWeight.bold,fontSize: 14)),
+                                Text('* موديل السيارة :   ${car.fileName}   ',style: TextStyle(color: PdfColors.blue900,fontWeight: FontWeight.bold,fontSize: 14)),
                                 SizedBox(height: 10),
                                 Text('* الــــــــــســـــــــنــــــــــة  :   ${car.actualYear.year}   ',style: TextStyle(color: PdfColors.blue900,fontWeight: FontWeight.bold,fontSize: 14)),
                                 SizedBox(height: 10),

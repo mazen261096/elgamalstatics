@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPreference {
+class SharedPreferenceAssistant {
 
   static Future<Map>  fetchSavedShared(String key) async {
     final SharedPreferences prefs =await SharedPreferences.getInstance();

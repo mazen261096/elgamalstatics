@@ -1,4 +1,4 @@
-import 'package:elgamalstatics/data/local/shared_preference.dart';
+import 'package:elgamalstatics/data/local/shared_preference_assistant.dart';
 import 'package:elgamalstatics/presentation/resources/strings_manager.dart';
 
 class PriceCalculator {
@@ -23,17 +23,17 @@ class PriceCalculator {
 
 
   static double totalCostEgp ({required double carPrice}){
-    return totalCostDollar(carPrice: carPrice)*63;
+    return totalCostDollar(carPrice: carPrice)*dollarPrice;
   }
 
   static Future<bool> isNumberSaved () async {
-    return await SharedPreference.isSharedSaved(AppStrings.calaculatorNumbers);
+    return await SharedPreferenceAssistant.isSharedSaved(AppStrings.calaculatorNumbers);
   }
 
   static Future<void> fetchNumbers() async {
 
      if(await isNumberSaved()){
-       Map data =await SharedPreference.fetchSavedShared(AppStrings.calaculatorNumbers);
+       Map data =await SharedPreferenceAssistant.fetchSavedShared(AppStrings.calaculatorNumbers);
        allNumbers =data;
        checkCost = data['Check Cost'];
        encarCost = data['Encar Cost'];

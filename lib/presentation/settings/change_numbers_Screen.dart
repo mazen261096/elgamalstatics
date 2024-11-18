@@ -3,7 +3,9 @@ import 'package:elgamalstatics/presentation/logic_code_machine/price_calcuator.d
 import 'package:elgamalstatics/presentation/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/local/shared_preference.dart';
+import '../../data/local/shared_preference_assistant.dart';
+import '../logic_code_machine/excel_Management.dart';
+import '../resources/routes_manager.dart';
 
 
 
@@ -51,12 +53,15 @@ class _ChangeNumbersScreenState extends State<ChangeNumbersScreen> {
       numberMap['Dollar Price'] = double.parse(_controller7.text);
       numberMap['Profits'] = double.parse(_controller8.text);
     });
-    bool isSaved = await SharedPreference.saveShared(numberMap, AppStrings.calaculatorNumbers);
+    bool isSaved = await SharedPreferenceAssistant.saveShared(numberMap, AppStrings.calaculatorNumbers);
     await PriceCalculator.fetchNumbers();
   if(isSaved){
-    Navigator.pop(context);
+    await ExcelManagement.initiateElgamalCars();
+    await ExcelManagement.initiateAllCars(onSheetLoadedCallback: (){});
+    await ExcelManagement.initiateElgamalCarsId();
+    Navigator.pushReplacementNamed(context, Routes.homeRoute);
   }else{
-    ConstWidgets.alertDialog(context: context, message: 'Plz Enter Correct Value', title: 'ERROR');
+    ConstWidgets.alertDialog(context: context, content: Text('Plz Enter Correct Value'), title: 'ERROR');
   }
   }
 
